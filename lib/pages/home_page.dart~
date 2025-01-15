@@ -1,0 +1,169 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:fluttermangsir/app_data/book_data.dart';
+
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return DefaultTabController(
+      length: 4,
+      child: Scaffold(
+          appBar: AppBar(
+            leading: Icon(CupertinoIcons.bars),
+            actions: [
+              IconButton(
+                  onPressed: () {
+                    print('hello jee');
+                  },
+                  icon: Icon(Icons.search)),
+              IconButton(
+                  onPressed: () {
+                    print('hello jee');
+                  },
+                  icon: Icon(Icons.notifications)),
+            ],
+            bottom: TabBar(
+                unselectedLabelColor: Colors.grey,
+                labelStyle: TextStyle(color: Colors.black),
+                tabs: [
+                  Tab(text: 'Overview'),
+                  Tab(text: 'Business'),
+                  Tab(text: 'Design'),
+                  Tab(text: 'Comic'),
+                ]),
+          ),
+          body: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: TabBarView(
+                children: [
+
+
+
+
+                   ListView(
+                     children: [
+                       SizedBox(height: 20,),
+                       Container(
+                         height: 200,
+                         child: ListView.separated(
+                          // physics: BouncingScrollPhysics(),
+                           separatorBuilder: (context, index) {
+                             return SizedBox(width: 10,);
+                           },
+                           scrollDirection: Axis.horizontal,
+                           itemCount: bookItems.length,
+                             itemBuilder: (context, index){
+                              final book = bookItems[index];
+
+                             return  Container(
+                               padding: EdgeInsets.all(13),
+                               decoration: BoxDecoration(
+                                   color: Color(0xFF71877A),
+                                   borderRadius: BorderRadius.circular(17)
+                               ),
+                               height: 200,
+                               width: 140,
+                               child: Card(
+                                 elevation: 10,
+                                 child: Image.network(book.imageUrl,
+                                   fit: BoxFit.cover,
+                                 ),
+                               ),
+
+                             );
+                           }
+                         ),
+                       ),
+
+
+
+               SizedBox(height: 16,),
+               Text(
+                 'You might like',
+                  style: TextStyle(
+                   fontWeight: FontWeight.bold,
+                      fontSize: 17,
+                    decorationStyle: TextDecorationStyle.solid,
+                    decorationColor: Colors.black,
+                    decoration: TextDecoration.underline,
+                  ),
+               ),
+
+                       SizedBox(height: 10,),
+             Row(
+               crossAxisAlignment: CrossAxisAlignment.start,
+               children: [
+
+                 ClipRRect(
+                   borderRadius: BorderRadius.circular(15),
+                   child: Image.network('https://plus.unsplash.com/premium_photo-1676762448044-02c6e3f7ba3b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyfHx8ZW58MHx8fHx8',
+                   height: 150,
+                     width: 100,
+                     fit: BoxFit.cover,
+                   ),
+                 ),
+                 SizedBox(width: 15,),
+                 Expanded(
+                   child: Column(
+                     crossAxisAlignment: CrossAxisAlignment.start,
+                     children: [
+                       Text('The Lion, the Witch and the Wardrobe'),
+                       SizedBox(height: 10,),
+                       Text('by C.S. Lewis', style: TextStyle(color: Color(0xFFDBDBDB), fontWeight: FontWeight.bold),),
+                       SizedBox(height: 10,),
+                       Text('⭐⭐⭐⭐⭐'),
+                       SizedBox(height: 10,),
+                       Row(
+                         children: [
+                           Icon(CupertinoIcons.book),
+                           SizedBox(width: 10,),
+                           Text('206 pages')
+                         ],
+                       ),
+                     ],
+                   ),
+                 ),
+                 Icon(Icons.bookmark)
+               ],
+             )          
+
+
+
+
+
+
+
+
+
+
+                     ],
+                   ),
+
+
+
+
+                   Text('hello'),
+                   Text('hello'),
+                   Text('hello'),
+
+            ]
+            ),
+          )
+      ),
+    );
+  }
+
+  Column _buildColumn(String label, IconData  icon) {
+    return Column(
+      children: [
+        Icon(
+         icon,
+          color: Colors.red,
+        ),
+        Text(label),
+      ],
+    );
+  }
+}
