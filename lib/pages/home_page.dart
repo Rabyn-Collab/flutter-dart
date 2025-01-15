@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttermangsir/app_data/book_data.dart';
 import 'package:fluttermangsir/pages/business/business_page.dart';
 import 'package:fluttermangsir/pages/comic/comic_page.dart';
 import 'package:fluttermangsir/pages/design/design_page.dart';
