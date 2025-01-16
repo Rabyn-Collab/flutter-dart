@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class BookSection extends StatelessWidget {
-  const BookSection({super.key});
+  final int pages;
+  const BookSection({super.key, required this.pages});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class BookSection extends StatelessWidget {
                   VerticalDivider(),
                   _buildColumn('Eng', 'languages'),
                   VerticalDivider(),
-                  _buildColumn('206', 'pages'),
+                  _buildColumn(pages.toString(), 'pages'),
                 ],
               ),
             ),

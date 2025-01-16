@@ -24,7 +24,7 @@ class BookList extends StatelessWidget {
           final book = bookItems[index];
           return InkWell(
             onTap: (){
-              Get.to(() => BookDetail(book: book,), transition: Transition.leftToRight);
+              Get.to(() => BookDetail(), transition: Transition.leftToRight);
             },
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,

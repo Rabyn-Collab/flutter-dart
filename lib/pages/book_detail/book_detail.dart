@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:fluttermangsir/constants/app_sizes.dart';
+import 'package:fluttermangsir/models/book.dart';
 import 'package:fluttermangsir/pages/book_detail/widgets/book_section.dart';
 import 'package:fluttermangsir/pages/book_detail/widgets/desc_widget.dart';
 import 'package:fluttermangsir/pages/book_detail/widgets/head_widget.dart';
 
 
-// Bisesh9$700
 
 class BookDetail extends StatelessWidget {
-  const BookDetail({super.key});
+  final Book book;
+  const BookDetail({super.key, required this.book});
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(onPressed: (){}, icon: Icon(Icons.chevron_left_sharp)),
+        title: Text(book.title),
         actions: [
           IconButton(onPressed: (){}, icon: Icon(Icons.bookmark))
         ],
@@ -23,9 +25,10 @@ class BookDetail extends StatelessWidget {
           children: [
             ListView(
               children: [
-                HeadWidget(),
+                HeadWidget(book: book,),
                 gapH16,
-                BookSection(),
+                BookSection(pages: book.pages,),
+                gapH16,
                 DescWidget()
               ],
             ),

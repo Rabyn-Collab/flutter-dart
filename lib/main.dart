@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fluttermangsir/app_data/book_data.dart';
-import 'package:fluttermangsir/pages/book_detail/book_detail.dart';
 import 'package:fluttermangsir/pages/home_page.dart';
+import 'package:get/get.dart';
 
 
 
@@ -22,11 +21,10 @@ class Main extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
        // theme: ThemeData.dark(),
-     // home: HomePage(),
-      home: BookDetail(),
+      home: HomePage(),
     );
   }
 }
