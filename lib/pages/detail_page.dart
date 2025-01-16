@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fluttermangsir/constants/app_sizes.dart';
 import 'package:fluttermangsir/models/book.dart';
-import 'package:fluttermangsir/pages/book_detail/widgets/book_section.dart';
-import 'package:fluttermangsir/pages/book_detail/widgets/desc_widget.dart';
-import 'package:fluttermangsir/pages/book_detail/widgets/head_widget.dart';
 
+import 'detail_widgets/book_section.dart';
+import 'detail_widgets/desc_widget.dart';
+import 'detail_widgets/head_widget.dart';
 
 
 class BookDetail extends StatelessWidget {

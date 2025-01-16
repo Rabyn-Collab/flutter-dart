@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttermangsir/app_data/book_data.dart';
-import 'package:fluttermangsir/pages/book_detail/book_detail.dart';
+import 'package:fluttermangsir/pages/detail_page.dart';
 import 'package:get/get.dart';
 
 class BookList extends StatelessWidget {
@@ -24,7 +24,7 @@ class BookList extends StatelessWidget {
           final book = bookItems[index];
           return InkWell(
             onTap: (){
-              Get.to(() => BookDetail(), transition: Transition.leftToRight);
+              Get.to(() => BookDetail(book: book,), transition: Transition.leftToRight);
             },
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
