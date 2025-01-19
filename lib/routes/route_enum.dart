@@ -1,0 +1,9 @@
+
+
+
+
+
+enum AppRoute {
+  home,
+  about
+}
