@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttermangsir/routes/route_enum.dart';
-import 'package:go_router/go_router.dart';
 
 
 
@@ -10,26 +8,70 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          TextButton(
-            onPressed: () {
-              context.pushNamed(AppRoute.form.name);
-            },
-            child: Text('Go To Form'),
-          ),
+      body: SafeArea(
+        child:  Container(
+          width: 200,
+          child: Card(
+            color: Colors.orange,
+             child: Padding(
+               padding: const EdgeInsets.all(10.0),
+               child: Column(
+                 crossAxisAlignment: CrossAxisAlignment.start,
+                 mainAxisSize: MainAxisSize.min,
+                 children: [
+                   Row(
+                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                     children: [
+                       Text('TiME'),
+                       Container(
+                         height: 30,
+                         width: 30,
+                         decoration: BoxDecoration(
+                           color: Colors.red,
+                           borderRadius: BorderRadius.circular(5)
+                         ),
+                         child: Icon(Icons.archive_rounded),
+                        
+                       ),
+                     ],
+                   ),
+                   Row(
+                     children: [
+                       CircleAvatar(
+                       ),
+                       Text('6:24')
 
-          TextButton(
-            onPressed: () {
-              context.pushNamed(AppRoute.grid.name);
-            },
-            child: Text('Go To Grid Page'),
+                     ],
+                   ),
+                   Text('Day streak, comeback tomorrow to keep it up!'),
+
+                 ],
+               ),
+             )
           ),
-        ],
+        ),
+        // GridView.builder(
+        //   physics: NeverScrollableScrollPhysics(),
+        //   shrinkWrap: true,
+        //   itemCount: 10,
+        //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        //         crossAxisCount: 2
+        //     ),
+        //     itemBuilder: (context, index){
+        //       return Text('hello');
+        //     }
+        // ),
+
       ),
     );
   }
 }
+
+
+
+
+
+
+
+
+
