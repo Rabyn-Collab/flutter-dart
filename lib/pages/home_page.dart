@@ -1,53 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:fluttermangsir/routes/route_enum.dart';
+import 'package:go_router/go_router.dart';
 
-//home page
-class HomePage extends StatefulWidget {
+
+
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-
-  int count = 0;
-
-  @override
   Widget build(BuildContext context) {
-
-   print('build');
     return Scaffold(
       appBar: AppBar(),
-      body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('$count ${count %2 ==0 ? 'Even': 'Odd'}', style: TextStyle(fontSize: 50),),
-          const Text('hello this is home page'),
-          ElevatedButton(
-              onPressed: (){
-                setState(() {
-                  count++;
-                  print(count);
-                });
-              },
-              child: const Text('make increment')),
-          ElevatedButton(
-              onPressed: count == 0 ? null : (){
-                if(count == 0) return;
-                print('hello');
+          TextButton(
+            onPressed: () {
+              context.pushNamed(AppRoute.form.name);
+            },
+            child: Text('Go To Form'),
+          ),
 
-                setState(() {
-                  count--;
-                  print(count);
-                });
-
-                // context.pushNamed(AppRoute.about.name);
-              },
-              child: const Text('make increment'))
+          TextButton(
+            onPressed: () {
+              context.pushNamed(AppRoute.grid.name);
+            },
+            child: Text('Go To Grid Page'),
+          ),
         ],
-      )),
+      ),
     );
   }
 }
-

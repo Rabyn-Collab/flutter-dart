@@ -16,19 +16,15 @@ final router = GoRouter(
       builder: (context, state) {
         return HomePage();
       },
-      routes: [
-        GoRoute(
-          path: 'grid',
-          name: AppRoute.grid.name,
-          builder: (context, state) {
-            return GridPage();
-          },
-        ),
-
-      ]
     ),
 
-
+    GoRoute(
+      path: '/grid',
+      name: AppRoute.grid.name,
+      builder: (context, state) {
+        return GridPage();
+      },
+    ),
 
     GoRoute(
       path: '/form',

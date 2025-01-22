@@ -8,7 +8,7 @@ int? a;
 
 void main (){
   runApp(Main());
- // a = 90;
+  a = 90;
 // final c = a ?? 9;
 // final m =   c + 10;
 // print(m);
