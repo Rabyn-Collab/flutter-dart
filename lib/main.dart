@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fluttermangsir/routes/app_routes.dart';
 
 
 
 
-
+//provider, notifier provider, future provider, async_notifier provider,  stream provider
 
 void main (){
-  runApp(Main());
-
-
-
-
+  runApp(ProviderScope(child: Main()));
 }
 
 
