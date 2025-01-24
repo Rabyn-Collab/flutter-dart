@@ -3,7 +3,7 @@ import 'package:fluttermangsir/models/todo.dart';
 
 
 
-final todoProvider = NotifierProvider(() => TodoProvider());
+final todoProvider = NotifierProvider<TodoProvider, List<Todo>>(() => TodoProvider());
 
 class TodoProvider extends Notifier<List<Todo>>{
   @override
@@ -14,8 +14,9 @@ class TodoProvider extends Notifier<List<Todo>>{
   }
 
 
-
-
+  void addTodo(Todo todo){
+    state.add(todo);
+  }
 
 
 }

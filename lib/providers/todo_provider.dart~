@@ -3,16 +3,20 @@ import 'package:fluttermangsir/models/todo.dart';
 
 
 
-final todoProvider = NotifierProvider<TodoProvider, List<Todo>>(() => TodoProvider());
+final todoProvider = NotifierProvider(() => TodoProvider());
 
 class TodoProvider extends Notifier<List<Todo>>{
   @override
   List<Todo> build() {
     return [
-     999,
+    Todo(todo: 'get up in the morning', isCompleted: false)
     ];
   }
 
+
+  void addTodo(Todo todo){
+    state.add(todo);
+  }
 
 
 }
