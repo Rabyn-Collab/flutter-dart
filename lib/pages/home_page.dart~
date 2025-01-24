@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:fluttermangsir/providers/provider.dart';
 
 
 class HomePage extends StatelessWidget {
@@ -11,7 +13,14 @@ class HomePage extends StatelessWidget {
       body: Column(
         children: [
           Text('hello jee'),
-          Text('some text')
+          Consumer(
+            builder: (context, ref, child) {
+              final somejee = ref.watch(dataProvider);
+              final somejee1 = ref.watch(dataProvider);
+              print(somejee == somejee1);
+              return Text(somejee);
+            }
+          )
         ],
       ),
     );

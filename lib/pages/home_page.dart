@@ -16,6 +16,7 @@ class HomePage extends StatelessWidget {
           Consumer(
             builder: (context, ref, child) {
               final somejee = ref.watch(dataProvider);
+
               return Text(somejee);
             }
           )
