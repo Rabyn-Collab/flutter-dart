@@ -14,4 +14,9 @@ class Todo{
   });
 
 
+  factory Todo.add(String todo){
+    return Todo(todo: todo, isCompleted: false);
+  }
+
+
 }

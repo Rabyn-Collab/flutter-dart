@@ -15,7 +15,12 @@ class TodoProvider extends Notifier<List<Todo>>{
 
 
   void addTodo(Todo todo){
-    state.add(todo);
+    state = [...state, todo];
+  }
+
+  void removeTodo(Todo todo){
+    state.remove(todo);
+    state = [...state];
   }
 
 

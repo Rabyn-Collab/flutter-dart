@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fluttermangsir/models/todo.dart';
 import 'package:fluttermangsir/providers/todo_provider.dart';
 import 'package:fluttermangsir/widgets/input_widget.dart';
-import 'package:fluttermangsir/widgets/todo_list.dart';
 
 
 class HomePage extends StatelessWidget {
@@ -23,7 +22,6 @@ class HomePage extends StatelessWidget {
           children: [
             const InputWidget(),
             const SizedBox(height: 20,),
-            const TodoList(),
           ],
         ),
       ),
