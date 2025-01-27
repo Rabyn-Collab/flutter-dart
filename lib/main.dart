@@ -7,9 +7,20 @@ import 'package:fluttermangsir/routes/app_routes.dart';
 
 //provider, notifier provider, future provider, async_notifier provider,  stream provider
 
-void main (){
-  runApp(ProviderScope(child: Main()));
+
+void greet({String? name}){
+   print(name ?? 'show');
 }
+
+void main (){
+ // greet();
+  runApp(ProviderScope(child: Main()));
+  // final somes = [11,22,33,44,55];
+  // print([
+  //   for(final n in somes) n +2
+  // ]);
+}
+
 
 
 class Main extends StatelessWidget {
