@@ -7,7 +7,7 @@ part 'sign_up_provider.g.dart';
 @riverpod
 class SignUp extends _$SignUp {
   @override
-  FutureOr<void> build() async {
+  FutureOr<void> build()  {
  
   }
 

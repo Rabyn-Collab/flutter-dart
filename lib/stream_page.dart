@@ -1,0 +1,22 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mvvm/feature/auth/repository/auth_repository.dart';
+
+
+class StreamPage extends ConsumerWidget {
+  const StreamPage({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final userState = ref.watch(userStreamProvider);
+    print(userState.valueOrNull);
+    return Scaffold(
+      appBar: AppBar(),
+      body: userState.when(
+      data: (data) => Center(child: Text('${data?.email}')),
+      error: (err, stack) => Center(child: Text(err.toString())),
+      loading: () => Center(child: CircularProgressIndicator()),
+    ),
+    );
+  }
+}
