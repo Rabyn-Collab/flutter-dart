@@ -38,3 +38,13 @@ export const getrecommendNews = async (req, res) => {
     return res.status(400).json({ data: err.data || err.message });
   }
 }
+
+export const getNewsDetail = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const response = await instance.get(`${mainNews}${id}/`);
+    return res.status(200).json(response.data);
+  } catch (err) {
+    return res.status(400).json({ data: err.data || err.message });
+  }
+}
