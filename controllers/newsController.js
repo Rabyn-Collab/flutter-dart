@@ -1,5 +1,4 @@
-import axios from "axios";
-import { mainNews } from "../apis.js";
+import { breakingNews, latestNews, mainNews, recommendedNews } from "../apis.js";
 import { instance } from "../index.js";
 
 
@@ -9,17 +8,13 @@ import { instance } from "../index.js";
 export const getNews = async (req, res) => {
 
   try {
-    const response = await axios.get(mainNews, {
-      headers: {
-        Authorization: 'token d8058afd4d72d56b1cd87497e0c0f8aabc0998b0'
-      }
-    });
+    const response = await instance.get(mainNews);
     return res.status(200).json(response.data);
   } catch (err) {
     return res.status(400).json({ data: err.data || err.message });
   }
 }
-export const breakingNews = async (req, res) => {
+export const getBreakingNews = async (req, res) => {
   try {
     const response = await instance.get(breakingNews);
     return res.status(200).json(response.data);
@@ -27,7 +22,7 @@ export const breakingNews = async (req, res) => {
     return res.status(400).json({ data: err.data || err.message });
   }
 }
-export const latestNews = async (req, res) => {
+export const getLatestNews = async (req, res) => {
   try {
     const response = await instance.get(latestNews);
     return res.status(200).json(response.data);
@@ -35,9 +30,9 @@ export const latestNews = async (req, res) => {
     return res.status(400).json({ data: err.data || err.message });
   }
 }
-export const recommendNews = async (req, res) => {
+export const getrecommendNews = async (req, res) => {
   try {
-    const response = await instance.get(recommendNews);
+    const response = await instance.get(recommendedNews);
     return res.status(200).json(response.data);
   } catch (err) {
     return res.status(400).json({ data: err.data || err.message });
