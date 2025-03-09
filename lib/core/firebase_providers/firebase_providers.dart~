@@ -15,9 +15,3 @@ FirebaseAuth firebaseAuth(Ref ref) {
 CollectionReference userDb(Ref ref) {
   return FirebaseFirestore.instance.collection('users');
 }
-
-
-@riverpod
-CollectionReference postDb(Ref ref) {
-  return FirebaseFirestore.instance.collection('posts');
-}

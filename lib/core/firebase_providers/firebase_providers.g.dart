@@ -38,5 +38,21 @@ final userDbProvider = AutoDisposeProvider<CollectionReference>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef UserDbRef = AutoDisposeProviderRef<CollectionReference>;
+String _$postDbHash() => r'a496ced022264d744d9e9efd802bd7bd7669f2f3';
+
+/// See also [postDb].
+@ProviderFor(postDb)
+final postDbProvider = AutoDisposeProvider<CollectionReference>.internal(
+  postDb,
+  name: r'postDbProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$postDbHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef PostDbRef = AutoDisposeProviderRef<CollectionReference>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

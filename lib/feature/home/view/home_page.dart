@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mvvm/feature/home/view/widgets/drawer_widget.dart';
+import 'package:mvvm/routes/route_enum.dart';
 
 
 class HomePage extends StatelessWidget {
@@ -8,7 +10,13 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        actions: [
+          IconButton(onPressed: (){
+            context.pushNamed(AppRoute.detail.name, pathParameters: {'id': '100'});
+          }, icon: Icon(Icons.chevron_right))
+        ],
+      ),
       drawer: DrawerWidget(),
         body: const Placeholder()
     );

@@ -1,0 +1,24 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mvvm/core/firebase_providers/firebase_providers.dart';
+import 'package:mvvm/feature/auth/service/auth_service.dart';
+import 'package:mvvm/feature/user/service/user_service.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+part 'post_repository.g.dart';
+
+
+class AuthRepository {
+
+  final AuthService authService;
+  final UserService userService;
+
+
+  }
+
+
+
+}
+
+
+

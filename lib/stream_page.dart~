@@ -9,6 +9,7 @@ class StreamPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final userState = ref.watch(userStreamProvider);
+    print(userState.valueOrNull);
     return Scaffold(
       appBar: AppBar(),
       body: userState.when(
@@ -18,4 +19,16 @@ class StreamPage extends ConsumerWidget {
     ),
     );
   }
+}
+
+
+abstract class Car{
+  String brand;
+  int price;
+  Car(this.brand, this.price);
+  
+  void drive();
+
+  void stop();
+
 }
