@@ -6,7 +6,23 @@ part of 'post_view_model.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$postMutationHash() => r'98aead502af61d1187a18a5537540473b5cbf75f';
+String _$postsStreamHash() => r'cadb34d7d33c136d3182fea78dfc28a91e007211';
+
+/// See also [postsStream].
+@ProviderFor(postsStream)
+final postsStreamProvider = AutoDisposeStreamProvider<List<Post>>.internal(
+  postsStream,
+  name: r'postsStreamProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$postsStreamHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef PostsStreamRef = AutoDisposeStreamProviderRef<List<Post>>;
+String _$postMutationHash() => r'27a3621696a84b0f1eb4d7a649f6b014375340f4';
 
 /// See also [PostMutation].
 @ProviderFor(PostMutation)

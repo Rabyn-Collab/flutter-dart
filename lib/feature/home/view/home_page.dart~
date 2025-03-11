@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mvvm/feature/home/view/widgets/drawer_widget.dart';
-import 'package:mvvm/feature/post/view/post_list.dart';
 import 'package:mvvm/routes/route_enum.dart';
 
 
@@ -19,11 +18,7 @@ class HomePage extends StatelessWidget {
         ],
       ),
       drawer: DrawerWidget(),
-        body: ListView(
-          children: [
-            PostList(),
-          ],
-        )
+        body: const Placeholder()
     );
   }
 }

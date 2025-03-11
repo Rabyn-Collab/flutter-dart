@@ -9,7 +9,7 @@ class ButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-        onPressed: onTap,
+        onPressed: isLoad ? null : onTap,
         child: isLoad ? Center(child: const CircularProgressIndicator(color: Colors.white,)) : Text('Submit')
     );
   }

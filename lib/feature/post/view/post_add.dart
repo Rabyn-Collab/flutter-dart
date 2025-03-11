@@ -6,7 +6,6 @@ import 'package:go_router/go_router.dart';
 import 'package:mvvm/core/apptheme/app_sizes.dart';
 import 'package:mvvm/core/common_widgets/button_widget.dart';
 import 'package:mvvm/core/common_widgets/common_dialog.dart';
-import 'package:mvvm/feature/auth/view_model/login_provider.dart';
 import 'package:mvvm/feature/post/view_model/post_view_model.dart';
 import 'package:mvvm/routes/route_enum.dart';
 
@@ -24,13 +23,16 @@ class _PostAddState extends ConsumerState<PostAdd> {
   Widget build(BuildContext context) {
     ref.listen(postMutationProvider, (prev, next){
       next.maybeWhen(
-          data: (data) => CommonDialog.showCommonDialog(context, 'Login Successfully'),
+          data: (data) {
+            CommonDialog.showCommonDialog(context, 'Post Added Successfully');
+            context.pop();
+          },
           error: (error, stackTrace) => CommonDialog.showCommonDialog(context, error.toString()),
           orElse: ()=> null
       );
     });
 
-    final loginState = ref.watch(postMutationProvider);
+    final postState = ref.watch(postMutationProvider);
     return Scaffold(
       appBar: AppBar(),
       body: Padding(
@@ -40,22 +42,34 @@ class _PostAddState extends ConsumerState<PostAdd> {
           child: ListView(
             children: [
               FormBuilderTextField(
-                name: 'email',
+                name: 'title',
                 textInputAction: TextInputAction.next ,
                 decoration: InputDecoration(
-                    hintText: 'Email'
+                    hintText: 'Title'
                 ),
                 validator: FormBuilderValidators.compose([
-                  FormBuilderValidators.email(),
+
                   FormBuilderValidators.required(),
                 ]),
               ),
               gapH20,
               FormBuilderTextField(
-                name: 'password',
+                name: 'description',
                 textInputAction: TextInputAction.done,
                 decoration: InputDecoration(
-                    hintText: 'Password'
+                    hintText: 'Description'
+                ),
+                validator: FormBuilderValidators.compose([
+                  FormBuilderValidators.required(),
+                ]),
+              ),
+
+              gapH20,
+              FormBuilderTextField(
+                name: 'imageUrl',
+                textInputAction: TextInputAction.done,
+                decoration: InputDecoration(
+                    hintText: 'ImageUrl'
                 ),
                 validator: FormBuilderValidators.compose([
                   FormBuilderValidators.required(),
@@ -63,26 +77,18 @@ class _PostAddState extends ConsumerState<PostAdd> {
               ),
               gapH30,
               ButtonWidget(
-                  isLoad: loginState.isLoading,
+                  isLoad: postState.isLoading,
                   onTap: (){
                     FocusScope.of(context).unfocus();
                     if(_formKey.currentState!.saveAndValidate(focusOnInvalid: false)){
                       final map = _formKey.currentState!.value;
-                      ref.read(loginProvider.notifier).loginUser(email: map['email'], password: map['password']);
+                      ref.read(postMutationProvider.notifier).createPost(title: map['title'], description: map['description'], imageUrl: map['imageUrl']);
+
                     }else{
 
                     }
                   }),
-              gapH30,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('Don\'t have an account?'),
-                  TextButton(onPressed: (){
-                    context.pushNamed(AppRoute.register.name);
-                  }, child: Text('Sign Up'))
-                ],
-              )
+
 
             ],
           ),

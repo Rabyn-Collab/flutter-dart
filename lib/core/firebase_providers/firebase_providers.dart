@@ -11,11 +11,11 @@ FirebaseAuth firebaseAuth(Ref ref) {
   return FirebaseAuth.instance;
 }
 
+
 @riverpod
 CollectionReference userDb(Ref ref) {
   return FirebaseFirestore.instance.collection('users');
 }
-
 
 @riverpod
 CollectionReference postDb(Ref ref) {

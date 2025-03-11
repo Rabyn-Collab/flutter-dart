@@ -9,5 +9,6 @@ enum AppRoute{
   login,
   register,
   post,
-  user
+  addPost,
+  user,
 }

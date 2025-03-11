@@ -5,7 +5,6 @@ import 'package:mvvm/feature/auth/view/login_page.dart';
 import 'package:mvvm/feature/auth/view/sign_up_page.dart';
 import 'package:mvvm/feature/home/view/detail_page.dart';
 import 'package:mvvm/feature/home/view/home_page.dart';
-import 'package:mvvm/feature/post/view/post_add.dart';
 import 'package:mvvm/routes/route_enum.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -39,7 +38,6 @@ GoRouter goRouter(Ref ref) {
               return NoTransitionPage(child: const HomePage());
             },
           routes: [
-
             GoRoute(
                 path: 'detail/:id',
               name: AppRoute.detail.name,
@@ -47,18 +45,7 @@ GoRouter goRouter(Ref ref) {
                   final id = state.pathParameters['id']!;
                 return NoTransitionPage(child:  DetailPage(id: id,));
               },
-            ),
-
-            GoRoute(
-              path: 'add-post',
-              name: AppRoute.addPost.name,
-              pageBuilder: (context, state) {
-
-                return NoTransitionPage(child:  const PostAdd());
-              },
-            ),
-
-
+            )
           ]
 
             ),
