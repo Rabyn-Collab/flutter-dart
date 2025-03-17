@@ -1,30 +1,42 @@
 import 'package:flutter/material.dart';
-import 'package:fluttermangsir/pages/home_page.dart';
-import 'package:get/get.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mvvm/routes/app_routes.dart';
+import 'package:onesignal_flutter/onesignal_flutter.dart';
+
+import 'firebase_options.dart';
 
 
 
-void main (){
-  // final numbers = [11,22,33,44,55];
-  // final n  = numbers.map((n){
-  //   return n * 2;
-  // }).toList();
-  //
-  // print(n);
-  runApp(Main());
+
+
+
+void main () async{
+
+
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  OneSignal.initialize("8d40620a-e8e0-491a-b772-5bc5cad16deb");
+  OneSignal.Notifications.requestPermission(true);
+
+  runApp(ProviderScope(child:const Main()));
 }
 
-
-//something to do
-class Main extends StatelessWidget {
+//
+class Main extends ConsumerWidget {
   const Main({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return GetMaterialApp(
+  Widget build(BuildContext context, ref) {
+  final goRouter = ref.watch(goRouterProvider);
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-       // theme: ThemeData.dark(),
-      home: HomePage(),
+      routerConfig: goRouter,
+
     );
   }
 }
+
+
