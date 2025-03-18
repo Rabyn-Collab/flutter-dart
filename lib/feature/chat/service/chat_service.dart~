@@ -31,10 +31,6 @@ class ChatService{
   }
 
 
-  Stream<List<types.Message>> getMessage (types.Room room) {
-    return chatCore.messages(room);
-  }
-
 
 
 }

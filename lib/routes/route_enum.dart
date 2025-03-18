@@ -13,4 +13,5 @@ enum AppRoute{
   editPost,
   user,
   userDetail,
+  recent,
 }

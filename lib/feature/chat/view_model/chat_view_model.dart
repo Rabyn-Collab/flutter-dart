@@ -1,5 +1,7 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mvvm/feature/chat/service/chat_service.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-
+import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 part 'chat_view_model.g.dart';
 
 
@@ -8,14 +10,28 @@ class ChatViewModel extends _$ChatViewModel {
   @override
   FutureOr<void> build()  {}
 
-  // Future<void> createRoom (types.User user) async{
-  //   try{
-  //     await chatCore.createRoom(user);
-  //
-  //   }on FirebaseException catch (err){
-  //     throw err.message ?? 'something went wrong';
-  //   }
-  //
-  // }
+
+  // AsyncData,AsyncError/AsyncLoading
+
+  Future<void> createRoom (types.User user) async{
+    state = const AsyncLoading();
+    state = await AsyncValue.guard(() => ref.read(chatServiceProvider).createRoom(user));
+
+  }
   
 }
+
+
+
+@riverpod
+Stream<List<types.Room>> getRooms (Ref ref) {
+  return ref.read(chatServiceProvider).getRooms();
+
+}
+
+
+@riverpod
+Stream<List<types.Message>> streamMessages(Ref ref, {required types.Room room }) {
+  return ref.read(chatServiceProvider).getMessage(room);
+}
+
