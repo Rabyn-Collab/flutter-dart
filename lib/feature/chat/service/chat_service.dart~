@@ -25,11 +25,24 @@ class ChatService{
 
   }
 
+  void sendMessage (types.Message message, types.Room room) {
+    try{
+       chatCore.sendMessage(message, room.id);
+    }on FirebaseException catch (err){
+      throw err.message ?? 'something went wrong';
+    }
+
+  }
+
 
   Stream<List<types.Room>> getRooms () {
     return chatCore.rooms();
   }
 
+
+  Stream<List<types.Message>> getMessage (types.Room room) {
+    return chatCore.messages(room);
+  }
 
 
 

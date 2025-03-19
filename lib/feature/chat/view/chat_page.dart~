@@ -37,9 +37,7 @@ class _ChatPageState extends ConsumerState<ChatPage> {
               ref.read(chatViewModelProvider.notifier).sendMessage(text, widget.room);
 
             },
-            user: chatUser,
-            showUserAvatars: true,
-            showUserNames: true,
+            user: chatUser, // Pass converted user
           );
         },
         error: (err, st) => Text('$err'),

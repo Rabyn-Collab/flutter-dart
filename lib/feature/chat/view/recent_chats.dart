@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mvvm/feature/chat/view_model/chat_view_model.dart';
+import 'package:mvvm/routes/route_enum.dart';
 
 
 class RecentChats extends ConsumerWidget {
@@ -18,6 +20,9 @@ class RecentChats extends ConsumerWidget {
                 itemBuilder: (context, index){
                 final recent = data[index];
                 return ListTile(
+                  onTap: (){
+                    context.pushNamed(AppRoute.chat.name, extra: recent);
+                  },
                   leading: CircleAvatar(
                     backgroundImage: NetworkImage(recent.imageUrl!),
                   ),

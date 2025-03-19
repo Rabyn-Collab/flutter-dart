@@ -18,6 +18,9 @@ class RecentChats extends ConsumerWidget {
                 itemBuilder: (context, index){
                 final recent = data[index];
                 return ListTile(
+                  leading: CircleAvatar(
+                    backgroundImage: NetworkImage(recent.imageUrl!),
+                  ),
                   title: Text(recent.name!),
                 );
                 }

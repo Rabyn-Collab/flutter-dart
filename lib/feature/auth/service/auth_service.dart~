@@ -19,7 +19,7 @@ AuthService(this.firebaseAuth);
   Future<void> loginUser({required String email, required String password}) async{
      try{
        final g = await firebaseAuth.signInWithEmailAndPassword(email: email, password: password);
-       await   OneSignal.User.addTags({'userId': g.user!.uid});
+       //await   OneSignal.User.addTags({'userId': g.user!.uid});
      } on FirebaseAuthException catch(err){
       throw '${err.message}';
      }

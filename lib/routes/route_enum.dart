@@ -14,4 +14,5 @@ enum AppRoute{
   user,
   userDetail,
   recent,
+  chat
 }

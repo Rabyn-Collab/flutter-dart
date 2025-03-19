@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
 
 
   Future getTags () async{
-    final user = await   OneSignal.User.getTags();
+    final user =   OneSignal.User.getTags();
     print(user);
   }
 

@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:mvvm/feature/auth/repository/auth_repository.dart';
 import 'package:mvvm/feature/auth/view/login_page.dart';
 import 'package:mvvm/feature/auth/view/sign_up_page.dart';
+import 'package:mvvm/feature/chat/view/chat_page.dart';
 import 'package:mvvm/feature/chat/view/recent_chats.dart';
 import 'package:mvvm/feature/home/view/detail_page.dart';
 import 'package:mvvm/feature/home/view/home_page.dart';
@@ -43,6 +44,15 @@ GoRouter goRouter(Ref ref) {
               return NoTransitionPage(child: const HomePage());
             },
           routes: [
+
+
+            GoRoute(
+              path: 'chat-page',
+              name: AppRoute.chat.name,
+              pageBuilder: (context, state) {
+                return NoTransitionPage(child:   ChatPage(room: state.extra as types.Room));
+              },
+            ),
 
             GoRoute(
               path: 'recent-chats',

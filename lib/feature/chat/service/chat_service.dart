@@ -25,6 +25,15 @@ class ChatService{
 
   }
 
+  Future<void> sendMessage (types.PartialText message, types.Room room) async {
+    try{
+       chatCore.sendMessage(message, room.id);
+    }on FirebaseException catch (err){
+      throw err.message ?? 'something went wrong';
+    }
+
+  }
+
 
   Stream<List<types.Room>> getRooms () {
     return chatCore.rooms();

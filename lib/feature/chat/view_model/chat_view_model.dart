@@ -1,3 +1,4 @@
+import 'package:flutter_chat_types/flutter_chat_types.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mvvm/feature/chat/service/chat_service.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -16,6 +17,12 @@ class ChatViewModel extends _$ChatViewModel {
   Future<void> createRoom (types.User user) async{
     state = const AsyncLoading();
     state = await AsyncValue.guard(() => ref.read(chatServiceProvider).createRoom(user));
+
+  }
+
+  Future<void> sendMessage ( types.PartialText message, types.Room room) async{
+    state = const AsyncLoading();
+    state = await AsyncValue.guard(() => ref.read(chatServiceProvider).sendMessage(message, room));
 
   }
   
