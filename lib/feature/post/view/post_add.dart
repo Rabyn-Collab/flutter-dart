@@ -7,7 +7,6 @@ import 'package:mvvm/core/apptheme/app_sizes.dart';
 import 'package:mvvm/core/common_widgets/button_widget.dart';
 import 'package:mvvm/core/common_widgets/common_dialog.dart';
 import 'package:mvvm/feature/post/view_model/post_view_model.dart';
-import 'package:mvvm/routes/route_enum.dart';
 
 
 class PostAdd extends ConsumerStatefulWidget {

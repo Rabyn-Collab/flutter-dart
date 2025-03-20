@@ -4,6 +4,7 @@ import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:mvvm/feature/chat/view_model/chat_view_model.dart';
+import 'package:mvvm/feature/notification/notification_service.dart';
 
 class ChatPage extends ConsumerStatefulWidget {
   final types.Room room;
@@ -27,6 +28,8 @@ class _ChatPageState extends ConsumerState<ChatPage> {
       imageUrl: firebaseUser.photoURL,
     );
 
+    print(widget.room);
+
     return Scaffold(
       appBar: AppBar(),
       body: messages.when(
@@ -35,7 +38,7 @@ class _ChatPageState extends ConsumerState<ChatPage> {
             messages: data,
             onSendPressed: (text) {
               ref.read(chatViewModelProvider.notifier).sendMessage(text, widget.room);
-
+              //NotificationService.sendNotification(text.text, 'please see my message', friendId)
             },
             user: chatUser,
             showUserAvatars: true,

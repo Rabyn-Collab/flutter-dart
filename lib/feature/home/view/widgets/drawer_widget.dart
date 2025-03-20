@@ -1,8 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mvvm/core/firebase_providers/firebase_providers.dart';
 import 'package:mvvm/feature/auth/repository/auth_repository.dart';
 import 'package:mvvm/routes/route_enum.dart';
 
