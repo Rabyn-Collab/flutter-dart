@@ -28,7 +28,9 @@ class _ChatPageState extends ConsumerState<ChatPage> {
       imageUrl: firebaseUser.photoURL,
     );
 
-    print(widget.room);
+final friendUser = widget.room.users.firstWhere((user) => user.id != firebaseUser.uid);
+
+// print(widget.room.users);
 
     return Scaffold(
       appBar: AppBar(),
@@ -38,7 +40,7 @@ class _ChatPageState extends ConsumerState<ChatPage> {
             messages: data,
             onSendPressed: (text) {
               ref.read(chatViewModelProvider.notifier).sendMessage(text, widget.room);
-              //NotificationService.sendNotification(text.text, 'please see my message', friendId)
+              NotificationService.sendNotification(text.text, 'please see my message', friendUser.id, widget.room);
             },
             user: chatUser,
             showUserAvatars: true,

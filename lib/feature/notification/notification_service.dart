@@ -1,6 +1,4 @@
-
-
-
+import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 
 import 'package:dio/dio.dart';
 
@@ -8,7 +6,7 @@ class NotificationService{
 
  static final Dio dio = Dio();
 
- static  Future<void>  sendNotification(String title, String body, String friendId) async {
+ static  Future<void>  sendNotification(String title, String body, String friendId, types.Room room) async {
      try{
        await dio.post('https://api.onesignal.com/notifications?c=push',
            data: {
@@ -20,9 +18,12 @@ class NotificationService{
              "android_channel_id": "8851bbbf-d9ea-44f8-ae8a-ef26b23d4234",
              "include_external_user_ids": [friendId],
              "priority": "URGENT",
+             "data": {
+               "room_id": room.id
+             },
              "included_segments": [
                "Active Users"
-             ]
+             ],
            },
            options: Options(
              headers: {

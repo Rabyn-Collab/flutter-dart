@@ -28,14 +28,14 @@ class _HomePageState extends State<HomePage> {
        final id = data.notification.additionalData?['room_id'];
        //final users = data.notification.additionalData?['users'];
 
-        print(id);
+
        // print(users);
        // context.pushNamed(AppRoute.chat.name, extra: types.Room(
        //   id: id,
        //   type: types.RoomType.direct,
        //   users: users.map((e) => types.User(id: e['id'])).toList(),
        // ));
-      // print(data.notification.additionalData);
+       print(data.notification.additionalData);
      });
 
     super.initState();
