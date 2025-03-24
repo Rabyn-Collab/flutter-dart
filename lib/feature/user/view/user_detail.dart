@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mvvm/core/apptheme/app_sizes.dart';
 import 'package:mvvm/core/common_widgets/common_dialog.dart';
 import 'package:mvvm/feature/chat/view_model/chat_view_model.dart';
 import 'package:mvvm/feature/user/view/widgets/user_post_list.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
+import 'package:mvvm/routes/route_enum.dart';
 
 
 class UserDetail extends ConsumerWidget {
@@ -13,13 +15,15 @@ class UserDetail extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    ref.listen(chatViewModelProvider, (prev, next){
+    ref.listen(roomViewModelProvider, (prev, next){
       next.maybeWhen(
-          data: (data){},
+          data: (data){
+           context.pushNamed(AppRoute.chat.name, extra: data);
+          },
           error: (err, st) => CommonDialog.showCommonDialog(context, '$err'),
           orElse: () => null);
     });
-    final roomState = ref.watch(chatViewModelProvider);
+    final roomState = ref.watch(roomViewModelProvider);
     return Scaffold(
       appBar: AppBar(),
       body: Padding(
@@ -43,7 +47,7 @@ class UserDetail extends ConsumerWidget {
                 gapW20,
                 ElevatedButton(
                     onPressed:roomState.isLoading? null: (){
-                      ref.read(chatViewModelProvider.notifier).createRoom(user);
+                      ref.read(roomViewModelProvider.notifier).createRoom(user);
                     },
                     child: roomState.isLoading ? CircularProgressIndicator(): Text('Start Chat'))
 

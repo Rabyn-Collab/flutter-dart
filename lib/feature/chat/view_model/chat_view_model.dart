@@ -14,11 +14,7 @@ class ChatViewModel extends _$ChatViewModel {
 
   // AsyncData,AsyncError/AsyncLoading
 
-  Future<void> createRoom (types.User user) async{
-    state = const AsyncLoading();
-    state = await AsyncValue.guard(() => ref.read(chatServiceProvider).createRoom(user));
 
-  }
 
   Future<void> sendMessage ( types.PartialText message, types.Room room) async{
     state = const AsyncLoading();
@@ -26,6 +22,20 @@ class ChatViewModel extends _$ChatViewModel {
 
   }
   
+}
+
+
+@riverpod
+class RoomViewModel extends _$RoomViewModel {
+  @override
+  FutureOr<types.Room?> build() {
+    return null;
+  }
+
+  Future<void> createRoom (types.User user) async{
+    state = const AsyncLoading();
+    state = await AsyncValue.guard(() => ref.read(chatServiceProvider).createRoom(user));
+  }
 }
 
 

@@ -45,7 +45,7 @@ class UserService {
       final map = e.data() as Map<String, dynamic>;
       return types.User(
           id: e.id,
-          firstName: map['firstName'],
+          firstName: map['username'],
           metadata: {'email': map['email']}
       );
     });

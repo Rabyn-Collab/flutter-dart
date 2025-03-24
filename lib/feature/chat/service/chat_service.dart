@@ -15,10 +15,10 @@ class ChatService{
   ChatService(this.chatCore);
 
 
-  Future<void> createRoom (types.User user) async{
+  Future<types.Room> createRoom (types.User user) async{
     try{
-      await chatCore.createRoom(user);
-
+      final room = await chatCore.createRoom(user);
+      return room;
     }on FirebaseException catch (err){
       throw err.message ?? 'something went wrong';
     }

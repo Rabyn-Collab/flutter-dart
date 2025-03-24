@@ -165,7 +165,7 @@ class _StreamMessagesProviderElement
   Room get room => (origin as StreamMessagesProvider).room;
 }
 
-String _$chatViewModelHash() => r'7bf34051d15c2d1aa19d75010b5cf8b6fb180264';
+String _$chatViewModelHash() => r'2468d16617fbb1126fd2c9792c4c560e0e0fc7ba';
 
 /// See also [ChatViewModel].
 @ProviderFor(ChatViewModel)
@@ -182,5 +182,22 @@ final chatViewModelProvider =
     );
 
 typedef _$ChatViewModel = AutoDisposeAsyncNotifier<void>;
+String _$roomViewModelHash() => r'd8f5e29b71d341f6bcdc1c95cf9a2695850c1087';
+
+/// See also [RoomViewModel].
+@ProviderFor(RoomViewModel)
+final roomViewModelProvider =
+    AutoDisposeAsyncNotifierProvider<RoomViewModel, types.Room?>.internal(
+      RoomViewModel.new,
+      name: r'roomViewModelProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$roomViewModelHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+typedef _$RoomViewModel = AutoDisposeAsyncNotifier<types.Room?>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
