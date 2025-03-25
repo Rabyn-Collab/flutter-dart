@@ -19,7 +19,7 @@ class NotificationService{
              "include_external_user_ids": [friendId],
              "priority": "URGENT",
              "data": {
-               "room_id": 'lkklnlknlknlk'
+               "room_id": room.id
              },
              "included_segments": [
                "Active Users"

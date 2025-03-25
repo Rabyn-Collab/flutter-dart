@@ -23,19 +23,16 @@ class _HomePageState extends State<HomePage> {
   void initState() {
 
      OneSignal.Notifications.addClickListener((data) {
-      // print(data.notification.additionalData);
 
        final id = data.notification.additionalData?['room_id'];
-       //final users = data.notification.additionalData?['users'];
+       print(id);
 
-        print(id);
-       // print(users);
        // context.pushNamed(AppRoute.chat.name, extra: types.Room(
        //   id: id,
        //   type: types.RoomType.direct,
-       //   users: users.map((e) => types.User(id: e['id'])).toList(),
+       //   users:[],
        // ));
-      // print(data.notification.additionalData);
+
      });
 
     super.initState();

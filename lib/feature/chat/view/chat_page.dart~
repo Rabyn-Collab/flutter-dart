@@ -40,7 +40,7 @@ final friendUser = widget.room.users.firstWhere((user) => user.id != firebaseUse
             messages: data,
             onSendPressed: (text) {
               ref.read(chatViewModelProvider.notifier).sendMessage(text, widget.room);
-              NotificationService.sendNotification(text.text, 'please see my message', friendUser.id, widget.room.id);
+              NotificationService.sendNotification(text.text, 'please see my message', friendUser.id, widget.room);
             },
             user: chatUser,
             showUserAvatars: true,

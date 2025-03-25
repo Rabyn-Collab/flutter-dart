@@ -6,7 +6,7 @@ class NotificationService{
 
  static final Dio dio = Dio();
 
- static  Future<void>  sendNotification(String title, String body, String friendId, types.Room room) async {
+ static  Future<void>  sendNotification(String title, String body, String friendId, String roomId) async {
      try{
        await dio.post('https://api.onesignal.com/notifications?c=push',
            data: {
@@ -19,7 +19,7 @@ class NotificationService{
              "include_external_user_ids": [friendId],
              "priority": "URGENT",
              "data": {
-               "room_id": room.id
+               "room_id": roomId
              },
              "included_segments": [
                "Active Users"
