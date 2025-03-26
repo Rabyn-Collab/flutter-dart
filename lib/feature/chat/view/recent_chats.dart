@@ -21,7 +21,7 @@ class RecentChats extends ConsumerWidget {
                 final recent = data[index];
                 return ListTile(
                   onTap: (){
-                    context.pushNamed(AppRoute.chat.name, extra: recent);
+                    context.pushNamed(AppRoute.chat.name, extra: recent.id);
                   },
                   leading: CircleAvatar(
                     backgroundImage: NetworkImage(recent.imageUrl ?? 'https://plus.unsplash.com/premium_photo-1731680781010-4be752ecab0f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyfHx8ZW58MHx8fHx8'),

@@ -23,15 +23,11 @@ class _HomePageState extends State<HomePage> {
   void initState() {
 
      OneSignal.Notifications.addClickListener((data) {
-
        final id = data.notification.additionalData?['room_id'];
-       print(id);
+       if(id!=null){
+         context.pushNamed(AppRoute.chat.name, extra: id);
+       }
 
-       // context.pushNamed(AppRoute.chat.name, extra: types.Room(
-       //   id: id,
-       //   type: types.RoomType.direct,
-       //   users:[],
-       // ));
 
      });
 

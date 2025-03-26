@@ -18,7 +18,7 @@ class UserDetail extends ConsumerWidget {
     ref.listen(roomViewModelProvider, (prev, next){
       next.maybeWhen(
           data: (data){
-           context.pushNamed(AppRoute.chat.name, extra: data);
+           context.pushNamed(AppRoute.chat.name, extra: data?.id);
           },
           error: (err, st) => CommonDialog.showCommonDialog(context, '$err'),
           orElse: () => null);

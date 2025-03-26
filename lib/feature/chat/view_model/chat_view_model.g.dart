@@ -22,7 +22,7 @@ final getRoomsProvider = AutoDisposeStreamProvider<List<types.Room>>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef GetRoomsRef = AutoDisposeStreamProviderRef<List<types.Room>>;
-String _$streamMessagesHash() => r'884e73c65f2de5d68550617316363aa8983b1afc';
+String _$getRoomHash() => r'35c1f74640d34d4451cae4729b144fb6508212bb';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -44,6 +44,124 @@ class _SystemHash {
     return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
   }
 }
+
+/// See also [getRoom].
+@ProviderFor(getRoom)
+const getRoomProvider = GetRoomFamily();
+
+/// See also [getRoom].
+class GetRoomFamily extends Family<AsyncValue<types.Room>> {
+  /// See also [getRoom].
+  const GetRoomFamily();
+
+  /// See also [getRoom].
+  GetRoomProvider call({required String roomId}) {
+    return GetRoomProvider(roomId: roomId);
+  }
+
+  @override
+  GetRoomProvider getProviderOverride(covariant GetRoomProvider provider) {
+    return call(roomId: provider.roomId);
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'getRoomProvider';
+}
+
+/// See also [getRoom].
+class GetRoomProvider extends AutoDisposeStreamProvider<types.Room> {
+  /// See also [getRoom].
+  GetRoomProvider({required String roomId})
+    : this._internal(
+        (ref) => getRoom(ref as GetRoomRef, roomId: roomId),
+        from: getRoomProvider,
+        name: r'getRoomProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$getRoomHash,
+        dependencies: GetRoomFamily._dependencies,
+        allTransitiveDependencies: GetRoomFamily._allTransitiveDependencies,
+        roomId: roomId,
+      );
+
+  GetRoomProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.roomId,
+  }) : super.internal();
+
+  final String roomId;
+
+  @override
+  Override overrideWith(
+    Stream<types.Room> Function(GetRoomRef provider) create,
+  ) {
+    return ProviderOverride(
+      origin: this,
+      override: GetRoomProvider._internal(
+        (ref) => create(ref as GetRoomRef),
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        roomId: roomId,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeStreamProviderElement<types.Room> createElement() {
+    return _GetRoomProviderElement(this);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is GetRoomProvider && other.roomId == roomId;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, roomId.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+}
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+mixin GetRoomRef on AutoDisposeStreamProviderRef<types.Room> {
+  /// The parameter `roomId` of this provider.
+  String get roomId;
+}
+
+class _GetRoomProviderElement
+    extends AutoDisposeStreamProviderElement<types.Room>
+    with GetRoomRef {
+  _GetRoomProviderElement(super.provider);
+
+  @override
+  String get roomId => (origin as GetRoomProvider).roomId;
+}
+
+String _$streamMessagesHash() => r'f03e96274d084034034dd0fecadb60e93f7d6322';
 
 /// See also [streamMessages].
 @ProviderFor(streamMessages)
@@ -165,7 +283,7 @@ class _StreamMessagesProviderElement
   Room get room => (origin as StreamMessagesProvider).room;
 }
 
-String _$chatViewModelHash() => r'2468d16617fbb1126fd2c9792c4c560e0e0fc7ba';
+String _$chatViewModelHash() => r'44ff25fba6249cfa3047bc0dbddcf4f7fe836598';
 
 /// See also [ChatViewModel].
 @ProviderFor(ChatViewModel)
@@ -182,7 +300,7 @@ final chatViewModelProvider =
     );
 
 typedef _$ChatViewModel = AutoDisposeAsyncNotifier<void>;
-String _$roomViewModelHash() => r'd8f5e29b71d341f6bcdc1c95cf9a2695850c1087';
+String _$roomViewModelHash() => r'497039ff0ca093cd6da90280e0673a5ec4b4a526';
 
 /// See also [RoomViewModel].
 @ProviderFor(RoomViewModel)

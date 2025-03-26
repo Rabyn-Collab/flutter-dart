@@ -44,6 +44,10 @@ class ChatService{
     return chatCore.messages(room);
   }
 
+  Stream<types.Room> getRoom (String roomId) {
+    return chatCore.room(roomId);
+  }
+
 
 
 }

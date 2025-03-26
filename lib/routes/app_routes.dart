@@ -50,7 +50,7 @@ GoRouter goRouter(Ref ref) {
               path: 'chatpage',
               name: AppRoute.chat.name,
               pageBuilder: (context, state) {
-                return NoTransitionPage(child:   ChatPage(room: state.extra as types.Room));
+                return NoTransitionPage(child:   ChatPage(roomId: state.extra as String));
               },
             ),
 
