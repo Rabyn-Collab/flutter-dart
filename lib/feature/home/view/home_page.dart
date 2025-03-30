@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mvvm/feature/chat/view/chat_page.dart';
 import 'package:mvvm/feature/home/view/widgets/drawer_widget.dart';
 import 'package:mvvm/feature/post/view/post_list.dart';
 import 'package:mvvm/feature/user/view/user_list.dart';
@@ -21,19 +22,22 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-
-     OneSignal.Notifications.addClickListener((data) {
-       final id = data.notification.additionalData?['room_id'];
-       if(id!=null){
-         context.pushNamed(AppRoute.chat.name, extra: id);
-       }
-
-
-     });
-
     super.initState();
+    click();
   }
 
+
+  void click() async{
+
+    OneSignal.Notifications.addClickListener((data) {
+      final id = data.notification.additionalData?['room_id'];
+      if(id!=null){
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => ChatPage(roomId: id,)));
+      }
+
+    });
+  }
   //
   // Future getTags () async{
   //   final user = await   OneSignal.User.getExternalId();

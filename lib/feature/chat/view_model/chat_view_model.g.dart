@@ -161,7 +161,7 @@ class _GetRoomProviderElement
   String get roomId => (origin as GetRoomProvider).roomId;
 }
 
-String _$streamMessagesHash() => r'f03e96274d084034034dd0fecadb60e93f7d6322';
+String _$streamMessagesHash() => r'36390752c0d0dbab9a31dd1803dcbf21b65ee804';
 
 /// See also [streamMessages].
 @ProviderFor(streamMessages)
@@ -200,8 +200,7 @@ class StreamMessagesFamily extends Family<AsyncValue<List<types.Message>>> {
 }
 
 /// See also [streamMessages].
-class StreamMessagesProvider
-    extends AutoDisposeStreamProvider<List<types.Message>> {
+class StreamMessagesProvider extends StreamProvider<List<types.Message>> {
   /// See also [streamMessages].
   StreamMessagesProvider({required Room room})
     : this._internal(
@@ -249,7 +248,7 @@ class StreamMessagesProvider
   }
 
   @override
-  AutoDisposeStreamProviderElement<List<types.Message>> createElement() {
+  StreamProviderElement<List<types.Message>> createElement() {
     return _StreamMessagesProviderElement(this);
   }
 
@@ -269,13 +268,13 @@ class StreamMessagesProvider
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin StreamMessagesRef on AutoDisposeStreamProviderRef<List<types.Message>> {
+mixin StreamMessagesRef on StreamProviderRef<List<types.Message>> {
   /// The parameter `room` of this provider.
   Room get room;
 }
 
 class _StreamMessagesProviderElement
-    extends AutoDisposeStreamProviderElement<List<types.Message>>
+    extends StreamProviderElement<List<types.Message>>
     with StreamMessagesRef {
   _StreamMessagesProviderElement(super.provider);
 

@@ -22,7 +22,7 @@ final firebaseAuthProvider = AutoDisposeProvider<FirebaseAuth>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef FirebaseAuthRef = AutoDisposeProviderRef<FirebaseAuth>;
-String _$firebaseChatCoreHash() => r'c01782afea1aa9c83940999f90e0de787989ba4f';
+String _$firebaseChatCoreHash() => r'338474171e71e5b44ea743d89b049566714a91d4';
 
 /// See also [firebaseChatCore].
 @ProviderFor(firebaseChatCore)

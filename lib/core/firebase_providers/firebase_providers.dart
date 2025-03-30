@@ -16,6 +16,7 @@ FirebaseAuth firebaseAuth(Ref ref) {
 
 @riverpod
 FirebaseChatCore firebaseChatCore(Ref ref) {
+  ref.keepAlive();
   return FirebaseChatCore.instance;
 }
 

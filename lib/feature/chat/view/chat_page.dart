@@ -43,11 +43,13 @@ class ChatWidget extends ConsumerStatefulWidget {
 }
 
 class _ChatWidgetState extends ConsumerState<ChatWidget> {
+
+  // Convert FirebaseAuth user to types.User
+
+
   @override
   Widget build(BuildContext context) {
-    final messages = ref.watch(streamMessagesProvider(room: widget.room));
-
-    // Convert FirebaseAuth user to types.User
+    final messages = ref.watch(streamMessagesProvider(room: types.Room(id: widget.room.id, type: types.RoomType.direct, users: [])));
     final firebaseUser = FirebaseAuth.instance.currentUser;
     final chatUser = types.User(
       id: firebaseUser!.uid,
@@ -62,7 +64,7 @@ class _ChatWidgetState extends ConsumerState<ChatWidget> {
           messages: data,
           onSendPressed: (text) {
             ref.read(chatViewModelProvider.notifier).sendMessage(text, widget.room);
-            NotificationService.sendNotification(text.text, 'please see my message', friendUser.id, widget.room.id);
+         //   NotificationService.sendNotification(text.text, 'please see my message', friendUser.id, widget.room.id);
           },
           user: chatUser,
           showUserAvatars: true,

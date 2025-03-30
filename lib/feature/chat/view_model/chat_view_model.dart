@@ -55,7 +55,7 @@ Stream<types.Room> getRoom (Ref ref, {required String roomId}) {
 }
 
 
-@riverpod
+@Riverpod(keepAlive: true)
 Stream<List<types.Message>> streamMessages(Ref ref, {required types.Room room }) {
   ref.keepAlive();
   return ref.read(chatServiceProvider).getMessage(room);
