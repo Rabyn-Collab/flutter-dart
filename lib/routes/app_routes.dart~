@@ -1,8 +1,8 @@
 import 'package:go_router/go_router.dart';
-import 'package:mvvm/models/book.dart';
-import 'package:mvvm/pages/detail_page.dart';
-import 'package:mvvm/pages/home_page.dart';
-import 'package:mvvm/routes/route_enums.dart';
+import 'package:magh/models/book.dart';
+import 'package:magh/pages/detail_page.dart';
+import 'package:magh/pages/home_page.dart';
+import 'package:magh/routes/route_enums.dart';
 
 class AppRoutes {
   static GoRouter get routes {

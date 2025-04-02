@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mvvm/app_theme/app_colors.dart';
-import 'package:mvvm/routes/app_routes.dart';
+import 'package:magh/app_theme/app_colors.dart';
+import 'package:magh/routes/app_routes.dart';
 
 
 void main (){
