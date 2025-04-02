@@ -1,42 +1,42 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mvvm/routes/app_routes.dart';
-import 'package:onesignal_flutter/onesignal_flutter.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-import 'firebase_options.dart';
+import 'pages/providers/theme/theme_provider.dart';
+import 'pages/providers/theme/theme_state.dart';
+import 'pages/todos_page.dart';
+import 'repositories/hive_todos_repository.dart';
+import 'repositories/providers/todos_repository_provider.dart';
 
+void main() async {
+  await Hive.initFlutter();
+  await Hive.openBox('todos');
 
-
-
-
-
-void main () async{
-
-
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
+  runApp(
+    ProviderScope(
+      overrides: [
+        todosRepositoryProvider.overrideWithValue(HiveTodosRepository())
+      ],
+      child: const MyApp(),
+    ),
   );
-  OneSignal.initialize("8d40620a-e8e0-491a-b772-5bc5cad16deb");
-  OneSignal.Notifications.requestPermission(true);
-
-  runApp(ProviderScope(child:const Main()));
 }
 
-//
-class Main extends ConsumerWidget {
-  const Main({super.key});
+class MyApp extends ConsumerWidget {
+  const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context, ref) {
-  final goRouter = ref.watch(goRouterProvider);
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      routerConfig: goRouter,
+  Widget build(BuildContext context, WidgetRef ref) {
+    final currentTheme = ref.watch(themeProvider);
 
+    return MaterialApp(
+      title: 'Todos',
+      debugShowCheckedModeBanner: false,
+      theme: switch (currentTheme) {
+        LightTheme() => ThemeData.light(useMaterial3: true),
+        DarkTheme() => ThemeData.dark(useMaterial3: true),
+      },
+      home: const TodosPage(),
     );
   }
 }
-
-
