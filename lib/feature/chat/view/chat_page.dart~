@@ -72,7 +72,7 @@ class _ChatWidgetState extends ConsumerState<ChatWidget> {
         );
       },
       error: (err, st) => Text('$err'),
-      loading: () => Center(child: CircularProgressIndicator()),
+      loading: () => CircularProgressIndicator(),
     );
   }
 }

@@ -52,6 +52,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
               gapH20,
               FormBuilderTextField(
                   name: 'password',
+                obscureText: true,
                 textInputAction: TextInputAction.done,
                 decoration: InputDecoration(
                     hintText: 'Password'

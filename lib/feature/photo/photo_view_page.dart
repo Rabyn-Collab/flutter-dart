@@ -1,0 +1,24 @@
+import 'package:flutter/material.dart';
+import 'package:photo_view/photo_view.dart';
+
+
+class PhotoViewPage extends StatelessWidget {
+  final String url;
+  const PhotoViewPage({super.key, required this.url});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.black,
+          foregroundColor: Colors.white,
+        ),
+        body:  PhotoView(
+          backgroundDecoration: BoxDecoration(
+            color: Colors.black
+          ),
+          imageProvider: NetworkImage(url),
+        )
+    );
+  }
+}

@@ -15,13 +15,12 @@ class UserList extends ConsumerWidget {
       height: 90,
       child: usersState.when(
           data: (data){
-
-            return ListView.builder(
+            return ListView.separated(
+              separatorBuilder: (c,i) => gapW10,
               scrollDirection: Axis.horizontal,
                 itemCount: data.length,
                 itemBuilder: (context, index){
                   final user = data[index];
-
               return InkWell(
                 onTap: (){
                   context.pushNamed(AppRoute.userDetail.name, extra:  user);
@@ -29,11 +28,11 @@ class UserList extends ConsumerWidget {
                 child: Column(
                   children: [
                     CircleAvatar(
-                      radius: 22,
+                      radius: 30,
                       backgroundImage: NetworkImage(user.imageUrl ?? 'https://images.unsplash.com/photo-1726066012699-1c843dad5fd8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxfHx8ZW58MHx8fHx8'),
                     ),
                    gapH10,
-                   Text(user.firstName!)
+                   Text(user.firstName!, style: TextStyle(fontSize: 12),)
                   ],
                 ),
               );

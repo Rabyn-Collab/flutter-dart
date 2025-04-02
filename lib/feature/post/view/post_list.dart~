@@ -21,7 +21,6 @@ class PostList extends ConsumerWidget {
           return ListView.separated(
             separatorBuilder: (c,i) => gapH6,
             shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
             itemCount: data.length,
             itemBuilder: (context, index) {
               final post = data[index];

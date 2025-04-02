@@ -50,6 +50,7 @@ class UserDetail extends ConsumerWidget {
                       ref.read(roomViewModelProvider.notifier).createRoom(user);
                     },
                     child: roomState.isLoading ? CircularProgressIndicator(): Text('Start Chat'))
+
               ],
             ),
             gapH26,
